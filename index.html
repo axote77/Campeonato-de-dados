@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campeonato de Dados</title>
+  <meta name="description" content="Juego de dados contra la computadora. Lanza 2 dados, suma los puntos y gana 3 rondas antes que la CPU.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <p class="eyebrow">Tú vs Computadora &mdash; 2 dados por turno</p>
+    <h1>Campeonato de <span class="accent">Dados</span></h1>
+    <p class="tagline">Gana 3 rondas antes que la CPU para llevarte el torneo.</p>
+  </header>
+
+  <main>
+
+    <section class="difficulty-stage" aria-label="Selección de dificultad">
+      <p class="dice-side-label">Dificultad</p>
+      <div class="difficulty-options" role="radiogroup" aria-label="Selecciona la dificultad">
+        <button type="button" class="diff-btn is-active" id="diff-facil" data-level="facil" aria-pressed="true">Fácil</button>
+        <button type="button" class="diff-btn" id="diff-medio" data-level="medio" aria-pressed="false">Medio</button>
+        <button type="button" class="diff-btn" id="diff-dificil" data-level="dificil" aria-pressed="false">Difícil</button>
+      </div>
+      <p class="difficulty-hint" id="difficulty-hint">Fácil: la CPU lanza del 1 al 6, igual que tú.</p>
+    </section>
+
+    <section class="scoreboard" aria-label="Marcador del torneo">
+      <article class="player-card" id="card-user" data-player="user" aria-current="true">
+        <h2 class="player-name">Tú</h2>
+        <p class="player-score" id="score-user">0</p>
+        <p class="player-status" id="status-user">Victorias</p>
+      </article>
+
+      <div class="vs-divider" aria-hidden="true">
+        VS
+        <span class="round-label" id="round-label">Ronda 1</span>
+      </div>
+
+      <article class="player-card" id="card-cpu" data-player="cpu">
+        <h2 class="player-name">Computadora</h2>
+        <p class="player-score" id="score-cpu">0</p>
+        <p class="player-status" id="status-cpu">Victorias</p>
+      </article>
+    </section>
+
+    <section class="dice-stage" aria-label="Mesa de juego">
+
+      <div class="dice-side">
+        <p class="dice-side-label">Tus dados</p>
+        <div class="dice-pair">
+          <div class="die" id="die-user-1"></div>
+          <div class="die" id="die-user-2"></div>
+        </div>
+        <p class="dice-total" id="total-user">&mdash;</p>
+      </div>
+
+      <div class="dice-side">
+        <p class="dice-side-label">Dados de la CPU</p>
+        <div class="dice-pair">
+          <div class="die" id="die-cpu-1"></div>
+          <div class="die" id="die-cpu-2"></div>
+        </div>
+        <p class="dice-total" id="total-cpu">&mdash;</p>
+      </div>
+
+      <div class="controls">
+        <button type="button" class="btn btn-roll" id="roll-btn">Lanzar tus dados</button>
+        <button type="button" class="btn btn-reset" id="reset-btn">Reiniciar torneo</button>
+      </div>
+    </section>
+
+    <section class="message-bar" aria-live="polite">
+      <p id="message">¡Bienvenido al Campeonato de Dados! Presiona "Lanzar tus dados" para empezar.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <details class="rules">
+      <summary>Reglas del juego</summary>
+      <ul>
+        <li>Cada ronda, tú y la computadora lanzan 2 dados cada uno.</li>
+        <li>Gana la ronda quien obtenga la suma más alta. Si hay empate, nadie gana la ronda.</li>
+        <li>El primero en llegar a <strong>3 rondas ganadas</strong> se lleva el torneo.</li>
+      </ul>
+    </details>
+    <p class="credits">Proyecto académico &mdash; basado en la lógica original en Python, adaptado a HTML, CSS y JavaScript.</p>
+  </footer>
+
+  <script src="js/dice-engine.js"></script>
+  <script src="js/ui-controller.js"></script>
+</body>
+</html>
